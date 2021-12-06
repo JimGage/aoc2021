@@ -9,21 +9,11 @@ fn solve( input : &str, day_count : u32 ) -> u64
         lantern_fish_per_day[ *elem as usize ] += 1;
     }
 
-/*
     for _ in 0..day_count
     {
-        let count = lantern_fish_per_day.remove( 0 ); // remove fish that are done
-        lantern_fish_per_day.push( count );           // spawn new fish
-        lantern_fish_per_day[6] += count;             // reset the removed fish
+        lantern_fish_per_day.rotate_left(1);
+        lantern_fish_per_day[6] += lantern_fish_per_day[8];
     }
-*/
-
-for _ in 0..day_count
-{
-    lantern_fish_per_day.rotate_left(1);
-    lantern_fish_per_day[6] += lantern_fish_per_day[8];
-}
-
 
     lantern_fish_per_day.iter().sum()
 }
